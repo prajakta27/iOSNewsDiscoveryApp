@@ -10,13 +10,15 @@ class ApiManager {
     public static let shared = ApiManager()
 
 
-    let url = NewsApi.urlForQuery(country: Settings.shared.country.rawValue)
+    
+    //let url = NewsApi.urlForQuery(country: Settings.shared.country.rawValue)
     
     var urlStr = ""
    
     func retrieveArticles(success: @escaping ((Articles) -> Void), fail: @escaping ((HTTPError) -> Void)) {
-        print("URL ---- \(String(describing: url))")
-        if let strurl = url {
+       
+        if let strurl = NewsApi.urlForQuery(country: Settings.shared.country.rawValue) {
+            print(strurl)
             let urlString = strurl.absoluteString
             urlStr = urlString
             print(type(of: urlString))  // should print "String"

@@ -10,11 +10,8 @@ struct Settings {
     static var shared = Settings()
 
     static let CountryKey = "country"
-
-
     static let CountryDefault: CountryEnum = .us
   
-
 
     var country: CountryEnum = UserDefaultsConfig.savedCountry {
         didSet {

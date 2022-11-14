@@ -11,7 +11,7 @@ enum CountryEnum: String, CaseIterable, Codable {
     case us
     case canada
 
-    var systemName: String {
+    var countryName: String {
         switch self {
         case .us:
             return "us"

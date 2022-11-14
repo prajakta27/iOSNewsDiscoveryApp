@@ -26,6 +26,15 @@ class NewsViewModel: BaseViewModel {
             articleLoaded(response?.articles, success)
         }
     }
+    
+    func select(_ country: String) {
+        
+        guard let newsCountry = CountryEnum(rawValue: country) else { return }
+        Settings.shared.country = newsCountry
+    
+        callService()
+    }
+    
 
     
     func numberOrRows() -> Int {

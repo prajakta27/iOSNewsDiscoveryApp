@@ -9,26 +9,83 @@ import UIKit
 
 class NewsViewController: UIViewController {
 
+
+    @IBOutlet weak var countryLbl: UILabel!
+    @IBOutlet weak var countryFlagImageView: UIImageView!
+    @IBOutlet weak var countryBtn: UIButton!
+    @IBOutlet weak var usaBtnStackView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
+    
+    private var pullControl = UIRefreshControl()
+    
     private var newsViewModel = NewsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        callResponse()
         
+    
+
+        pullControl.attributedTitle = NSAttributedString(string: "Refresh")
+                pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
+                if #available(iOS 10.0, *) {
+                    tableView.refreshControl = pullControl
+                } else {
+                    tableView.addSubview(pullControl)
+                }
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    func callResponse() {
+        Loader.shared.show()
         self.newsViewModel.articleLoaded = { [weak self] (_, success) in
             if success {
+                Loader.shared.hide()
                 self?.tableView.reloadData()
             } else {
 
             }
         }
+    }
+    // Actions
+    @objc private func refreshListData(_ sender: Any) {
+            self.pullControl.endRefreshing()
+        self.newsViewModel.callService()
+        // You can stop after API Call
         
-        
-
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func changeToCanadaBtnAction(_ sender: Any) {
+        
+        Loader.shared.show()
+        if countryLbl.text == "USA News" {
+            newsViewModel.select(CountryEnum.canada.rawValue)
+            countryLbl.text = "Canada News"
+            setImageViewChange(imageName: CountryEnum.canada.rawValue)
+            countryBtn.setTitle("Change to US", for: .normal)
+            
+        } else {
+            
+            countryLbl.text = "Canada News"
+            newsViewModel.select(CountryEnum.us.rawValue)
+            countryLbl.text = "USA News"
+            setImageViewChange(imageName: CountryEnum.us.rawValue)
+            countryBtn.setTitle("Change to Canada", for: .normal)
+        
+        }
+    }
+    
+    func setImageViewChange(imageName: String) {
+        let yourImage: UIImage? = UIImage(named: imageName)
+        countryFlagImageView.image = yourImage
+    }
+    
+    
     private func setupUI() {
+        
+        tableView.estimatedRowHeight = 250
+        
         self.tableView.registerCell(type: NewsTableViewCell.self)
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -44,16 +101,29 @@ class NewsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+
 
 }
 
 extension NewsViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+  
+        let articleData = self.newsViewModel.getNews(index: indexPath.row)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newsDetailsView = storyboard.instantiateViewController(withIdentifier: "newsDetailsViewControllerId") as! NewsDetailsViewController
+        newsDetailsView.articleData = articleData
+        self.navigationController?.pushViewController(newsDetailsView, animated: true)
+     
     }
 }
 
 extension NewsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.newsViewModel.numberOrRows()
     }
