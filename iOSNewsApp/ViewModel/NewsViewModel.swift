@@ -27,6 +27,14 @@ class NewsViewModel: BaseViewModel {
         }
     }
 
+    
+    func numberOrRows() -> Int {
+        return self.article?.count ?? 0
+    }
+
+    func getNews(index: Int) -> ArticleList? {
+        return self.article?[index]
+    }
 
 }
 

@@ -18,7 +18,7 @@ struct NewsApi {
         urlComponents.path = everything
 
         let keyQueryItem = NewsApi.keyQueryItem
-        let dateQueryItem = URLQueryItem(name: "from", value: "2022-10-13")
+        let dateQueryItem = URLQueryItem(name: "from", value: DateFormatterClass.getCurrentShortDate())
         let publishQueryItem = URLQueryItem(name: "sortBy", value: "publishedAt")
         let queryQueryItem = URLQueryItem(name: "q", value: country)
 

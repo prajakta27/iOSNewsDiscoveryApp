@@ -24,8 +24,6 @@ class NetworkManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         let task: URLSessionDataTask = session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
-
-            
             
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
