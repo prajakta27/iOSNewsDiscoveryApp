@@ -23,10 +23,9 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         callResponse()
-        
-    
+        callButtonSetUp()
 
-        pullControl.attributedTitle = NSAttributedString(string: "Refresh")
+        pullControl.attributedTitle = NSAttributedString(string: Constants.REFRESH)
                 pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
                 if #available(iOS 10.0, *) {
                     tableView.refreshControl = pullControl
@@ -35,8 +34,25 @@ class NewsViewController: UIViewController {
                 }
         // Do any additional setup after loading the view.
     }
+
+    // User prefernce checking
+    func callButtonSetUp() {
+        
+            if UserDefaultsConfig.savedCountry == CountryEnum.us {
+                countryLbl.text = Constants.USA_NEWS
+                setImageViewChange(imageName: CountryEnum.us.rawValue)
+                countryBtn.setTitle(Constants.CHANGE_TO_CANADA, for: .normal)
+            
+            } else {
+                countryLbl.text = Constants.CANADA_NEWS
+                setImageViewChange(imageName: CountryEnum.canada.rawValue)
+                countryBtn.setTitle(Constants.CHANGE_TO_US, for: .normal)
+            }
+
+        
+    }
     
-    
+    // call API response
     func callResponse() {
         Loader.shared.show()
         self.newsViewModel.articleLoaded = { [weak self] (_, success) in
@@ -48,9 +64,10 @@ class NewsViewController: UIViewController {
             }
         }
     }
+    
     // Actions
     @objc private func refreshListData(_ sender: Any) {
-            self.pullControl.endRefreshing()
+        self.pullControl.endRefreshing()
         self.newsViewModel.callService()
         // You can stop after API Call
         
@@ -59,22 +76,22 @@ class NewsViewController: UIViewController {
     @IBAction func changeToCanadaBtnAction(_ sender: Any) {
         
         Loader.shared.show()
-        if countryLbl.text == "USA News" {
+        if countryLbl.text == Constants.USA_NEWS {
             newsViewModel.select(CountryEnum.canada.rawValue)
-            countryLbl.text = "Canada News"
+            countryLbl.text = Constants.CANADA_NEWS
             setImageViewChange(imageName: CountryEnum.canada.rawValue)
-            countryBtn.setTitle("Change to US", for: .normal)
-            
+            countryBtn.setTitle(Constants.CHANGE_TO_US, for: .normal)
+
         } else {
-            
-            countryLbl.text = "Canada News"
+
             newsViewModel.select(CountryEnum.us.rawValue)
-            countryLbl.text = "USA News"
+            countryLbl.text = Constants.USA_NEWS
             setImageViewChange(imageName: CountryEnum.us.rawValue)
-            countryBtn.setTitle("Change to Canada", for: .normal)
-        
+            countryBtn.setTitle(Constants.CHANGE_TO_CANADA, for: .normal)
+
         }
     }
+    
     
     func setImageViewChange(imageName: String) {
         let yourImage: UIImage? = UIImage(named: imageName)

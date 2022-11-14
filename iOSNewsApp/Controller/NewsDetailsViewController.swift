@@ -32,7 +32,7 @@ class NewsDetailsViewController: UIViewController {
         newsTitleLbl.text =  articleData?.title
         descriptionLbl.text = articleData?.description
         contentLbl.text = articleData?.content
-        authorNameLbl.text = articleData?.author
+        authorNameLbl.text = articleData?.author ?? "Unknown"
         
         if let imageUrl = URL(string: articleData?.urlToImage ?? "") {
             newsImage.sd_setImage(with: imageUrl,placeholderImage: UIImage(named: "ImagePlaceorder"))
@@ -43,7 +43,6 @@ class NewsDetailsViewController: UIViewController {
         
         hrsagoLbl.text = DateFormatterClass.timeInterval(timeAgo: articleData?.publishedAt ?? "")
         publishLbl.text = DateFormatterClass.getFormattedDate(serverTime: articleData?.publishedAt ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ssZ", toFormat: "HH:mm E, d MMM y")
-        
         
         
     }

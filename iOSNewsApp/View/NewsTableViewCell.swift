@@ -34,21 +34,10 @@ class NewsTableViewCell: UITableViewCell {
             newsImg.sd_setImage(with: imageUrl,placeholderImage: UIImage(named: "ImagePlaceorder"))
         } else {
             newsImg.image = UIImage(named: "ImagePlaceorder")
-
         }
         
         timeLbl.text = DateFormatterClass.timeInterval(timeAgo: articleData.publishedAt ?? "")
         
-        // Create URL
-//        guard let url = URL(string: articleData.urlToImage ?? "") else { return }
-//
-//           // Fetch Image Data
-//           if let data = try? Data(contentsOf: url) {
-//               // Create Image and Update Image View
-//               newsImg.image = UIImage(data: data)
-//           }
-        
-
     }
     
     
