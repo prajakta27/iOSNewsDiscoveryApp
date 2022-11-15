@@ -7,12 +7,9 @@
 
 import Foundation
 class ApiManager {
+    
+    
     public static let shared = ApiManager()
-
-
-    
-    //let url = NewsApi.urlForQuery(country: Settings.shared.country.rawValue)
-    
     var urlStr = ""
    
     func retrieveArticles(success: @escaping ((Articles) -> Void), fail: @escaping ((HTTPError) -> Void)) {

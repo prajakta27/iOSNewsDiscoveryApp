@@ -11,6 +11,7 @@ struct NewsApiQuery {
     
     static let ApiKey = "86f654ea51584b7b8cab4e81f98d51f2"
 
+    // create URL with parameter
     static func urlForQuery(country: String) -> URL? {
         var urlComponents = NewsApiQuery.baseUrlComponents
 

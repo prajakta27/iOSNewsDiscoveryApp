@@ -10,6 +10,10 @@ class NewsViewModel: BaseViewModel {
     var articleLoaded: (([ArticleList]?, Bool) -> Void)?
     var article: [ArticleList]?
 
+    /**
+     for API call response callService()
+     */
+    
     override func callService() {
         
         ApiManager.shared.retrieveArticles { [weak self] response in
@@ -21,17 +25,25 @@ class NewsViewModel: BaseViewModel {
     }
 
 
+    /**
+     handle response handleResponse()
+     - Parameter response: article_List
+     - Parameter success: bool_Value
+     */
     private func handleResponse(response: Articles?, success: Bool) {
         if let articleLoaded = self.articleLoaded {
             articleLoaded(response?.articles, success)
         }
     }
     
+    /**
+      save user prefernce select()
+     - Parameter country: selected country name
+     */
+        
     func select(_ country: CountryEnum) {
         
-    
         Settings.shared.country = country
-    
         callService()
     }
     

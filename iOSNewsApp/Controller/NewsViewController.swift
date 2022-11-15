@@ -57,6 +57,7 @@ class NewsViewController: UIViewController {
     // call API response
     func callResponse() {
         Loader.shared.show()
+        // closure for binding
         self.newsViewModel.articleLoaded = { [weak self] (_, success) in
             if success {
                 Loader.shared.hide()
@@ -77,11 +78,12 @@ class NewsViewController: UIViewController {
     
     @IBAction func changeToCanadaBtnAction(_ sender: Any) {
         
+        // Firebase log event
         Analytics.logEvent(FirebaseEventsLog.EVENT_COUNTRY_CHANGE_BUTTON, parameters:  [ "screenName": "news_Article_Listing_Screen",
             "event": "country_Change_Button_Click"
         ])
         
-        
+        // Button handling
         Loader.shared.show()
         if countryLbl.text == Constants.USA_NEWS {
             newsViewModel.select(CountryEnum.canada)
@@ -109,7 +111,6 @@ class NewsViewController: UIViewController {
     private func setupUI() {
         
         tableView.estimatedRowHeight = 250
-        
         self.tableView.registerCell(type: NewsTableViewCell.self)
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -137,6 +138,7 @@ extension NewsViewController: UITableViewDelegate {
         Analytics.logEvent(FirebaseEventsLog.EVENT_DETAILED_PAGE_SCREEN, parameters:  [ "screenName": "news_Article_Listing_Screen",
             "event": "article_Selection_Click_Pressed"
         ])
+        
         let articleData = self.newsViewModel.getNews(index: indexPath.row)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newsDetailsView = storyboard.instantiateViewController(withIdentifier: "newsDetailsViewControllerId") as! NewsDetailsViewController
