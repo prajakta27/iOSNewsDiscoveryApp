@@ -25,7 +25,7 @@ class NewsDetailsViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
 
-        Analytics.logEvent(AnalyticsEventScreenView, parameters: ["screenName": "news_article_screen"])
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: ["screenName": "news_Article_Screen"])
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +34,7 @@ class NewsDetailsViewController: UIViewController {
         newsTitleLbl.text =  articleData?.title
         descriptionLbl.text = articleData?.description
         contentLbl.text = articleData?.content
-        authorNameLbl.text = articleData?.author ?? "Unknown"
+        authorNameLbl.text = articleData?.author ?? Constants.UNKNOWN
         
         if let imageUrl = URL(string: articleData?.urlToImage ?? "") {
             newsImage.sd_setImage(with: imageUrl,placeholderImage: UIImage(named: "ImagePlaceorder"))

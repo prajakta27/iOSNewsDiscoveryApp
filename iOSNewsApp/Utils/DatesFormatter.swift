@@ -6,8 +6,10 @@
 //
 
 import Foundation
+
 class DateFormatterClass: NSObject {
-   class func getCurrentShortDate() -> String {
+   
+    class func getCurrentShortDate() -> String {
         let todaysDate = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

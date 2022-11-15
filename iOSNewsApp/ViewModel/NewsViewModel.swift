@@ -19,7 +19,6 @@ class NewsViewModel: BaseViewModel {
             self?.handleResponse(response: nil, success: false)
         }
     }
-    
 
 
     private func handleResponse(response: Articles?, success: Bool) {
@@ -28,10 +27,10 @@ class NewsViewModel: BaseViewModel {
         }
     }
     
-    func select(_ country: String) {
+    func select(_ country: CountryEnum) {
         
-        guard let newsCountry = CountryEnum(rawValue: country) else { return }
-        Settings.shared.country = newsCountry
+    
+        Settings.shared.country = country
     
         callService()
     }

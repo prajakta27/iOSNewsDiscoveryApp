@@ -24,4 +24,5 @@ struct UserDefaultsConfig {
 
     @UserDefault(Settings.CountryKey, defaultValue: Settings.CountryDefault)
     static var savedCountry: CountryEnum
+
 }

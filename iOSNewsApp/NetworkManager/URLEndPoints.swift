@@ -7,17 +7,16 @@
 
 import Foundation
 
-struct NewsApi {
+struct NewsApiQuery {
     
-
     static let ApiKey = "86f654ea51584b7b8cab4e81f98d51f2"
 
     static func urlForQuery(country: String) -> URL? {
-        var urlComponents = NewsApi.baseUrlComponents
+        var urlComponents = NewsApiQuery.baseUrlComponents
 
         urlComponents.path = everything
 
-        let keyQueryItem = NewsApi.keyQueryItem
+        let keyQueryItem = NewsApiQuery.keyQueryItem
         let dateQueryItem = URLQueryItem(name: "from", value: DateFormatterClass.getCurrentShortDate())
         let publishQueryItem = URLQueryItem(name: "sortBy", value: "publishedAt")
         let queryQueryItem = URLQueryItem(name: "q", value: country)
@@ -26,12 +25,12 @@ struct NewsApi {
 
         return urlComponents.url
     }
-
+    
 }
 
 
 
-private extension NewsApi {
+private extension NewsApiQuery {
     
    static var everything = "/v2/everything"
 

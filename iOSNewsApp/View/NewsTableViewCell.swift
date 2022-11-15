@@ -26,7 +26,7 @@ class NewsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func setArticleData(articleData: ArticleList) {
-        autherLbl.text = articleData.author
+        autherLbl.text = articleData.author ?? Constants.UNKNOWN
         titleLbl.text = articleData.title
         
 

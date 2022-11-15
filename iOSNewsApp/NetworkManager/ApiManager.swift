@@ -17,7 +17,7 @@ class ApiManager {
    
     func retrieveArticles(success: @escaping ((Articles) -> Void), fail: @escaping ((HTTPError) -> Void)) {
        
-        if let strurl = NewsApi.urlForQuery(country: Settings.shared.country.rawValue) {
+        if let strurl = NewsApiQuery.urlForQuery(country: Settings.shared.country.rawValue) {
             print(strurl)
             let urlString = strurl.absoluteString
             urlStr = urlString

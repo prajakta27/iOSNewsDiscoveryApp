@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		091BDF1E29239477009DD99A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 091BDF1D29239477009DD99A /* GoogleService-Info.plist */; };
 		094309A0292261A500FEAF93 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943099F292261A500FEAF93 /* NewsDetailsViewController.swift */; };
+		0958B7212923E7EA006212A6 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958B7202923E7EA006212A6 /* ModelTests.swift */; };
 		095FE6382921904800718182 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FE6362921904800718182 /* NewsTableViewCell.swift */; };
 		095FE6392921904800718182 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 095FE6372921904800718182 /* NewsTableViewCell.xib */; };
 		095FE63C2921914900718182 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095FE63B2921914900718182 /* UITableView+Extension.swift */; };
@@ -20,7 +21,6 @@
 		09ABC37F29216FB000AC2DB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC37D29216FB000AC2DB2 /* Main.storyboard */; };
 		09ABC38129216FB000AC2DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC38029216FB000AC2DB2 /* Assets.xcassets */; };
 		09ABC38429216FB100AC2DB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09ABC38229216FB000AC2DB2 /* LaunchScreen.storyboard */; };
-		09ABC38F29216FB100AC2DB2 /* iOSNewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC38E29216FB100AC2DB2 /* iOSNewsAppTests.swift */; };
 		09ABC39929216FB100AC2DB2 /* iOSNewsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC39829216FB100AC2DB2 /* iOSNewsAppUITests.swift */; };
 		09ABC39B29216FB100AC2DB2 /* iOSNewsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC39A29216FB100AC2DB2 /* iOSNewsAppUITestsLaunchTests.swift */; };
 		09ABC3AC2921705700AC2DB2 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC3AB2921705700AC2DB2 /* HTTPMethods.swift */; };
@@ -61,6 +61,7 @@
 		01E29518A7C2F51FC6301142 /* Pods-iOSNewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSNewsApp.release.xcconfig"; path = "Target Support Files/Pods-iOSNewsApp/Pods-iOSNewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		091BDF1D29239477009DD99A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0943099F292261A500FEAF93 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
+		0958B7202923E7EA006212A6 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		095FE6362921904800718182 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		095FE6372921904800718182 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		095FE63B2921914900718182 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		09ABC38329216FB000AC2DB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09ABC38529216FB100AC2DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09ABC38A29216FB100AC2DB2 /* iOSNewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSNewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		09ABC38E29216FB100AC2DB2 /* iOSNewsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewsAppTests.swift; sourceTree = "<group>"; };
 		09ABC39429216FB100AC2DB2 /* iOSNewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSNewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ABC39829216FB100AC2DB2 /* iOSNewsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewsAppUITests.swift; sourceTree = "<group>"; };
 		09ABC39A29216FB100AC2DB2 /* iOSNewsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		09ABC38D29216FB100AC2DB2 /* iOSNewsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				09ABC38E29216FB100AC2DB2 /* iOSNewsAppTests.swift */,
+				0958B7202923E7EA006212A6 /* ModelTests.swift */,
 			);
 			path = iOSNewsAppTests;
 			sourceTree = "<group>";
@@ -308,6 +308,7 @@
 				09ABC37129216FB000AC2DB2 /* Frameworks */,
 				09ABC37229216FB000AC2DB2 /* Resources */,
 				4CFFBAF0F558D72D077AD42D /* [CP] Embed Pods Frameworks */,
+				0958B7152923AED3006212A6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -430,6 +431,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0958B7152923AED3006212A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
 		421FEA1189343D34E9F237B8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,7 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09ABC38F29216FB100AC2DB2 /* iOSNewsAppTests.swift in Sources */,
+				0958B7212923E7EA006212A6 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YU6WB94747;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSNewsApp/Info.plist;
@@ -763,6 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YU6WB94747;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSNewsApp/Info.plist;
