@@ -39,9 +39,6 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajb-de-KMC">
                                         <rect key="frame" x="0.0" y="50" width="140.5" height="29.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29.5" id="OVU-Ke-LaB"/>
-                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Change to canada">
                                             <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>

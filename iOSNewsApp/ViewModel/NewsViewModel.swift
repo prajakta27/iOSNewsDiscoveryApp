@@ -11,6 +11,7 @@ class NewsViewModel: BaseViewModel {
     var article: [ArticleList]?
 
     override func callService() {
+        
         ApiManager.shared.retrieveArticles { [weak self] response in
             self?.article = response.articles
             self?.handleResponse(response: response, success: true)

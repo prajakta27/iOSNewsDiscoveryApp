@@ -25,20 +25,27 @@ class NetworkManager {
 
         let task: URLSessionDataTask = session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
             
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    fail(.noData)
-                    return
-                }
-                let decoder = JSONDecoder()
-//                try! decoder.decode(T.self, from: data)
-                
-                if let json = try? decoder.decode(T.self, from: data) {
-                    success(json)
-                } else {
-                    fail(.parsingFailed)
-                }
-            }
+            
+                        DispatchQueue.main.async {
+                            guard let data = data, error == nil else {
+                                fail(.noData)
+                                return
+                            }
+                      
+                        
+                        do {
+                            let decoder = JSONDecoder()
+                            let decodedData = try decoder.decode(T.self, from: data)
+                     
+                                success(decodedData)
+
+                        } catch {
+                   
+                                fail(.parsingFailed)
+                  
+                        }
+                        }
+            
         })
         task.resume()
     }

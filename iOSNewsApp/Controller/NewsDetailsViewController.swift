@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import FirebaseAnalytics
 
 class NewsDetailsViewController: UIViewController {
     @IBOutlet weak var newsTitleLbl: UILabel!
@@ -24,6 +25,7 @@ class NewsDetailsViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
 
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: ["screenName": "news_article_screen"])
         // Do any additional setup after loading the view.
     }
     

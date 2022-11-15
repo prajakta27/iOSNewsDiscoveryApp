@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class NewsViewController: UIViewController {
 
@@ -42,6 +43,7 @@ class NewsViewController: UIViewController {
                 countryLbl.text = Constants.USA_NEWS
                 setImageViewChange(imageName: CountryEnum.us.rawValue)
                 countryBtn.setTitle(Constants.CHANGE_TO_CANADA, for: .normal)
+              
             
             } else {
                 countryLbl.text = Constants.CANADA_NEWS
@@ -75,20 +77,25 @@ class NewsViewController: UIViewController {
     
     @IBAction func changeToCanadaBtnAction(_ sender: Any) {
         
+        Analytics.logEvent(FirebaseEventsLog.EVENT_COUNTRY_CHANGE_BUTTON, parameters:  [ "screenName": "news_article_listing_screen",
+            "event": "country_change_button_click"
+        ])
+        
+        
         Loader.shared.show()
         if countryLbl.text == Constants.USA_NEWS {
             newsViewModel.select(CountryEnum.canada.rawValue)
             countryLbl.text = Constants.CANADA_NEWS
             setImageViewChange(imageName: CountryEnum.canada.rawValue)
             countryBtn.setTitle(Constants.CHANGE_TO_US, for: .normal)
-
+           
         } else {
 
             newsViewModel.select(CountryEnum.us.rawValue)
             countryLbl.text = Constants.USA_NEWS
             setImageViewChange(imageName: CountryEnum.us.rawValue)
             countryBtn.setTitle(Constants.CHANGE_TO_CANADA, for: .normal)
-
+        
         }
     }
     
@@ -127,6 +134,9 @@ extension NewsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
+        Analytics.logEvent(FirebaseEventsLog.EVENT_DETAILED_PAGE_SCREEN, parameters:  [ "screenName": "news_article_listing_screen",
+            "event": "article_selection_click_pressed"
+        ])
         let articleData = self.newsViewModel.getNews(index: indexPath.row)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newsDetailsView = storyboard.instantiateViewController(withIdentifier: "newsDetailsViewControllerId") as! NewsDetailsViewController

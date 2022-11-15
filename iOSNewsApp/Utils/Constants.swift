@@ -16,3 +16,9 @@ class Constants: NSObject {
 
     // test 3
 }
+
+class FirebaseEventsLog: NSObject {
+    
+    static let EVENT_COUNTRY_CHANGE_BUTTON = "button_pressed"
+    static let EVENT_DETAILED_PAGE_SCREEN = "detail_page_pressed"
+}
